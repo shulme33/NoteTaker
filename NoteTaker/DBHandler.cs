@@ -15,7 +15,7 @@ namespace NoteTaker
 
         public DBHandler()
         {
-            conn = new SqlConnection("server = localhost ;database = master;Trusted_Connection = yes");
+            conn = new SqlConnection("server = localhost ;database = NoteTakerApp;Trusted_Connection = yes");
         }
 
         public DataTable QueryDB(String query)

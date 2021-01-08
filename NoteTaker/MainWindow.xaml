@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:NoteTaker"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid x:Name="Grid_Main">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200" />
             <ColumnDefinition Width="*" />
@@ -16,5 +16,14 @@
             <RowDefinition Height="75" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+
+        <ScrollViewer Grid.Row="1" Grid.Column="0" VerticalScrollBarVisibility="Visible" 
+                      HorizontalScrollBarVisibility="Disabled" Width="200" 
+                      HorizontalAlignment="Left">
+        <StackPanel Name="NoteList" Width="180">
+
+            </StackPanel>
+        </ScrollViewer>
+        
     </Grid>
 </Window>

@@ -30,7 +30,8 @@ namespace NoteTaker
         {
             InitializeComponent();
             db = new DBHandler();
-            noteList = new NoteList(db);
+            noteList = new NoteList(db, this);
+            noteList.LoadNotesList();
         }
     }
 }
