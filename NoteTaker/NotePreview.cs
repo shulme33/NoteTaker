@@ -48,18 +48,24 @@ namespace NoteTaker
             stackPanel.Children.Add(textPreview);
 
             //Overall Parent Label
-            Label mainLabel = new Label();
-            mainLabel.Content = title;
-            mainLabel.MouseLeftButtonDown += LabelMouseLeftButtonUp;
-            mainLabel.Content = stackPanel;
+            Button mainButton = new Button();
+            mainButton.Content = title;
+            mainButton.HorizontalContentAlignment = HorizontalAlignment.Left;
+            //mainButton.MouseLeftButtonDown += LabelMouseLeftButtonUp;
+            //mainButton.Click += EventHandler(noteClicked);
+            //mainButton.Attributes.Add("OnClick", "btn_Click");
+            mainButton.Click += new RoutedEventHandler(noteClicked);
+            mainButton.BorderThickness = new Thickness(0, 0, 0, 1);
+            mainButton.Content = stackPanel;
+            mainButton.Padding = new Thickness(5);
 
             //Add to window
-            mainWindow.NoteList.Children.Add(mainLabel);
+            mainWindow.NoteList.Children.Add(mainButton);
         }
 
-        public void noteClicked(object sender, EventArgs e)
+        public void noteClicked(object sender, RoutedEventArgs e)
         {
-
+            Console.WriteLine("Clicked 2: " + title);
         }
 
         private void LabelMouseLeftButtonUp(object sender, MouseButtonEventArgs e)

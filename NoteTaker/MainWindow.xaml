@@ -17,9 +17,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Fill="#BFBFBF">
-            
-        </Rectangle>
+        <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Fill="#BFBFBF" />
 
         <ScrollViewer Grid.Row="1" Grid.Column="0" VerticalScrollBarVisibility="Visible" 
                       HorizontalScrollBarVisibility="Disabled" Width="300" 
@@ -27,10 +25,26 @@
 
             <StackPanel Name="NoteList" Width="280" >
 
-                
+
             </StackPanel>
 
         </ScrollViewer>
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox x:Name="CanvasTitle" Grid.Row="0" Grid.Column="0" FontSize="30" BorderThickness="0"/>
+            <Button Grid.Row="0" Grid.Column="1" Margin="5">Edit</Button>
+                <TextBox x:Name="CanvasMainText" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" FontSize="16" TextWrapping="Wrap" AcceptsReturn="True"/>
+        </Grid>
         
     </Grid>
 </Window>
