@@ -1,0 +1,14 @@
+C:\Users\Sam\Desktop\Files\1 - Coding\Personal-Projects\Learning\NoteTaker\NoteTaker\bin\Debug\NoteTaker.exe.config
+C:\Users\Sam\Desktop\Files\1 - Coding\Personal-Projects\Learning\NoteTaker\NoteTaker\bin\Debug\NoteTaker.exe
+C:\Users\Sam\Desktop\Files\1 - Coding\Personal-Projects\Learning\NoteTaker\NoteTaker\bin\Debug\NoteTaker.pdb
+C:\Users\Sam\Desktop\Files\1 - Coding\Personal-Projects\Learning\NoteTaker\NoteTaker\obj\Debug\MainWindow.g.cs
+C:\Users\Sam\Desktop\Files\1 - Coding\Personal-Projects\Learning\NoteTaker\NoteTaker\obj\Debug\App.g.cs
+C:\Users\Sam\Desktop\Files\1 - Coding\Personal-Projects\Learning\NoteTaker\NoteTaker\obj\Debug\NoteTaker_MarkupCompile.cache
+C:\Users\Sam\Desktop\Files\1 - Coding\Personal-Projects\Learning\NoteTaker\NoteTaker\obj\Debug\NoteTaker_MarkupCompile.lref
+C:\Users\Sam\Desktop\Files\1 - Coding\Personal-Projects\Learning\NoteTaker\NoteTaker\obj\Debug\MainWindow.baml
+C:\Users\Sam\Desktop\Files\1 - Coding\Personal-Projects\Learning\NoteTaker\NoteTaker\obj\Debug\NoteTaker.g.resources
+C:\Users\Sam\Desktop\Files\1 - Coding\Personal-Projects\Learning\NoteTaker\NoteTaker\obj\Debug\NoteTaker.Properties.Resources.resources
+C:\Users\Sam\Desktop\Files\1 - Coding\Personal-Projects\Learning\NoteTaker\NoteTaker\obj\Debug\NoteTaker.csproj.GenerateResource.cache
+C:\Users\Sam\Desktop\Files\1 - Coding\Personal-Projects\Learning\NoteTaker\NoteTaker\obj\Debug\NoteTaker.csproj.CoreCompileInputs.cache
+C:\Users\Sam\Desktop\Files\1 - Coding\Personal-Projects\Learning\NoteTaker\NoteTaker\obj\Debug\NoteTaker.exe
+C:\Users\Sam\Desktop\Files\1 - Coding\Personal-Projects\Learning\NoteTaker\NoteTaker\obj\Debug\NoteTaker.pdb
