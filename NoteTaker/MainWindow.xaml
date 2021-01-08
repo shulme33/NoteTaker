@@ -5,24 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NoteTaker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="800" Width="1600">
     <Grid x:Name="Grid_Main">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="300" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="75" />
+            <RowDefinition Height="120" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <ScrollViewer Grid.Row="1" Grid.Column="0" VerticalScrollBarVisibility="Visible" 
-                      HorizontalScrollBarVisibility="Disabled" Width="200" 
-                      HorizontalAlignment="Left">
-        <StackPanel Name="NoteList" Width="180">
+        <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Fill="#BFBFBF">
+            
+        </Rectangle>
 
+        <ScrollViewer Grid.Row="1" Grid.Column="0" VerticalScrollBarVisibility="Visible" 
+                      HorizontalScrollBarVisibility="Disabled" Width="300" 
+                      HorizontalAlignment="Left" Background="#D9D9D9">
+
+            <StackPanel Name="NoteList" Width="280" >
+
+                
             </StackPanel>
+
         </ScrollViewer>
         
     </Grid>

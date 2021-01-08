@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -12,11 +13,13 @@ namespace NoteTaker
     {
         public DBHandler db;
         public MainWindow mainWindow;
+        public ArrayList previews;
 
         public NoteList(DBHandler db, MainWindow mainWindow)
         {
             this.db = db;
             this.mainWindow = mainWindow;
+            this.previews = new ArrayList();
         }
 
         public void LoadNotesList()
@@ -26,12 +29,13 @@ namespace NoteTaker
             foreach (DataRow dr in results.Rows)
             {
                 Console.WriteLine(dr["Title"]);
-                Label txt = new Label();
-                txt.Content = dr["title"].ToString();
 
-                mainWindow.NoteList.Children.Add(txt);
-                //Grid.SetRow(txt, 1);
-                //Grid.SetColumn(txt, 1);
+                NotePreview newNote = new NotePreview((int)dr["ID"], 
+                                                        dr["Title"].ToString(), 
+                                                        dr["MainText"].ToString(), 
+                                                        mainWindow);
+                previews.Add(newNote);
+
             }
         }
 
