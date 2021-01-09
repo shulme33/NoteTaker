@@ -46,5 +46,41 @@ namespace NoteTaker
 
             return ds;
         }
+
+        public void SaveItemFromCanvas(int ID, String title, String previewText, String mainText)
+        {
+
+            String query = "update Notes set Title = @Title, PreviewText = @PreviewText, MainText = @MainText where ID = @ID";
+
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(query, conn);
+            cmd.Parameters.Add("@ID", SqlDbType.Int);
+            cmd.Parameters.Add("@Title", SqlDbType.NVarChar);
+            cmd.Parameters.Add("@PreviewText", SqlDbType.NVarChar);
+            cmd.Parameters.Add("@MainText", SqlDbType.NVarChar);
+
+            cmd.Parameters["@ID"].Value = ID;
+            cmd.Parameters["@Title"].Value = title;
+            cmd.Parameters["@PreviewText"].Value = previewText;
+            cmd.Parameters["@MainText"].Value = mainText;
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+
+            //string stmt = "INSERT INTO dbo.Test(id, name) VALUES(@ID, @Name)";
+
+            //SqlCommand cmd = new SqlCommand(smt, _connection);
+            //cmd.Parameters.Add("@ID", SqlDbType.Int);
+            //cmd.Parameters.Add("@Name", SqlDbType.VarChar, 100);
+            //cmd.Parameters["@ID"].Value = i;
+            //cmd.Parameters["@Name"].Value = i.ToString();
+            //cmd.ExecuteNonQuery();
+
+            //SqlCommand cmd = new SqlCommand();
+            //cmd.Connection = conn;
+            //conn.Open();
+            //cmd.CommandText = query;
+            //conn.Close();
+        }
     }
 }

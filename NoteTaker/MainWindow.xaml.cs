@@ -33,5 +33,10 @@ namespace NoteTaker
             noteList = new NoteList(db, this);
             noteList.LoadNotesList();
         }
+
+        private void ButtonSaveNote_Click(object sender, RoutedEventArgs e)
+        {
+            noteList.SaveNote();
+        }
     }
 }

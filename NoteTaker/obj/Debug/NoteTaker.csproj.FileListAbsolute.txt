@@ -12,4 +12,3 @@ C:\Users\Sam\Desktop\Files\1 - Coding\Personal-Projects\Learning\NoteTaker\NoteT
 C:\Users\Sam\Desktop\Files\1 - Coding\Personal-Projects\Learning\NoteTaker\NoteTaker\obj\Debug\NoteTaker.csproj.CoreCompileInputs.cache
 C:\Users\Sam\Desktop\Files\1 - Coding\Personal-Projects\Learning\NoteTaker\NoteTaker\obj\Debug\NoteTaker.exe
 C:\Users\Sam\Desktop\Files\1 - Coding\Personal-Projects\Learning\NoteTaker\NoteTaker\obj\Debug\NoteTaker.pdb
-C:\Users\Sam\Desktop\Files\1 - Coding\Personal-Projects\Learning\NoteTaker\NoteTaker\obj\Debug\NoteTaker.csprojAssemblyReference.cache

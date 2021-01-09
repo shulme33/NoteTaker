@@ -11,24 +11,38 @@ namespace NoteTaker
 {
     public class NotePreview
     {
-        public int ID;
+        public int ID { get; set; }
         public String title;
         public String previewText;
+        public String mainText;
         public MainWindow mainWindow;
-        public Label label;
+        public NoteList noteList;
+        public Button mainButton;
 
-        public NotePreview(int ID, String title, String previewText, MainWindow mainWindow)
+        public NotePreview(int ID, String title, String previewText, MainWindow mainWindow, NoteList noteList)
         {
             this.ID = ID;
             this.title = title;
             this.previewText = previewText;
             this.mainWindow = mainWindow;
+            this.noteList = noteList;
             ConstructLabel();
         }
 
 
         public void ConstructLabel()
         {
+            //Generatl Strucutre of each preview
+            //
+            //< Button >
+            //    < StackPanel Orientation = "Vertical" >
+            //        < TextBlock FontSize = "20" FontWeight = "Bold" > Item </ TextBlock >
+            //        < TextBlock FontSize = "16" TextWrapping = "Wrap" >
+            //       this is a very long text inside a textblock and this needs to be on multiline...
+            //        </ TextBlock >
+            //    </ StackPanel >
+            //</ Button >
+
             //Title Text
             TextBlock textTitle = new TextBlock();
             textTitle.FontSize = 20;
@@ -47,39 +61,24 @@ namespace NoteTaker
             stackPanel.Children.Add(textTitle);
             stackPanel.Children.Add(textPreview);
 
-            //Overall Parent Label
-            Button mainButton = new Button();
-            mainButton.Content = title;
-            mainButton.HorizontalContentAlignment = HorizontalAlignment.Left;
-            //mainButton.MouseLeftButtonDown += LabelMouseLeftButtonUp;
-            //mainButton.Click += EventHandler(noteClicked);
-            //mainButton.Attributes.Add("OnClick", "btn_Click");
-            mainButton.Click += new RoutedEventHandler(noteClicked);
-            mainButton.BorderThickness = new Thickness(0, 0, 0, 1);
-            mainButton.Content = stackPanel;
-            mainButton.Padding = new Thickness(5);
+            //Overall Parent Button - Represents each preview
+            this.mainButton = new Button();
+            this.mainButton.Content = title;
+            this.mainButton.HorizontalContentAlignment = HorizontalAlignment.Left;
+            this.mainButton.Click += new RoutedEventHandler(previewSelected);
+            this.mainButton.BorderThickness = new Thickness(0, 0, 0, 1);
+            this.mainButton.Content = stackPanel;
+            this.mainButton.Padding = new Thickness(5);
 
             //Add to window
-            mainWindow.NoteList.Children.Add(mainButton);
+            mainWindow.NoteList.Children.Add(this.mainButton);
         }
 
-        public void noteClicked(object sender, RoutedEventArgs e)
+        public void previewSelected(object sender, RoutedEventArgs e)
         {
             Console.WriteLine("Clicked 2: " + title);
+            noteList.OpenPreviewOnCanvas(ID);
         }
 
-        private void LabelMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            Console.WriteLine("Clicked: " + title);
-        }
-
-        //< Label >
-        //    < StackPanel Orientation = "Vertical" >
-        //        < TextBlock FontSize = "20" FontWeight = "Bold" > Item </ TextBlock >
-        //        < TextBlock FontSize = "16" TextWrapping = "Wrap" >
-        //       this is a very long text inside a textblock and this needs to be on multiline...
-        //        </ TextBlock >
-        //    </ StackPanel >
-        //</ Label >
     }
 }

@@ -42,7 +42,7 @@
             </Grid.ColumnDefinitions>
 
             <TextBox x:Name="CanvasTitle" Grid.Row="0" Grid.Column="0" FontSize="30" BorderThickness="0"/>
-            <Button Grid.Row="0" Grid.Column="1" Margin="5">Edit</Button>
+            <Button x:Name="ButtonSaveNote" Grid.Row="0" Grid.Column="1" Margin="5" Click="ButtonSaveNote_Click">Save</Button>
                 <TextBox x:Name="CanvasMainText" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" FontSize="16" TextWrapping="Wrap" AcceptsReturn="True"/>
         </Grid>
         
