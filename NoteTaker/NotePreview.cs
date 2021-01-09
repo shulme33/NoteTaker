@@ -93,7 +93,8 @@ namespace NoteTaker
 
         public String AddElipses(String prev)
         {
-            return prev += " ...";
+            return prev.Substring(0, SystemConstants.PREVIEW_LENGTH) + " ...";
+
         }
 
     }
