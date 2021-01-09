@@ -14,14 +14,14 @@ namespace NoteTaker
         public DBHandler db;
         public MainWindow mainWindow;
         public List<NotePreview> previews;
-        public int curNoteOnCanvas;
+        public NotePreview curNoteOnCanvas;
 
         public NoteList(DBHandler db, MainWindow mainWindow)
         {
             this.db = db;
             this.mainWindow = mainWindow;
             this.previews = new List<NotePreview>();
-            this.curNoteOnCanvas = -1;
+            this.curNoteOnCanvas = null;
         }
 
         public void LoadNotesList()
@@ -41,27 +41,35 @@ namespace NoteTaker
 
             }
 
-            this.curNoteOnCanvas = previews[0].ID; ;
+            this.curNoteOnCanvas = previews[0]; ;
             OpenPreviewOnCanvas(this.curNoteOnCanvas);
         }
 
         public void SaveNote()
         {
             Console.WriteLine("Note being saved");
-            db.SaveItemFromCanvas(this.curNoteOnCanvas, 
+            db.SaveItemFromCanvas(this.curNoteOnCanvas.ID, 
                                   mainWindow.CanvasTitle.Text,
-                                  mainWindow.CanvasMainText.Text.Substring(0, 35), 
+                                  mainWindow.CanvasMainText.Text.Substring(0, SystemConstants.PREVIEW_LENGTH), 
                                   mainWindow.CanvasMainText.Text);
+
+            var results = db.QueryDB("select ID, Title, PreviewText, MainText from Notes where ID = " + this.curNoteOnCanvas.ID);
+            
+            DataRow dr = results.Rows[0];
+            
+            curNoteOnCanvas.UpdateItem(dr["Title"].ToString(), 
+                                        dr["PreviewText"].ToString());
         }
 
-        public void OpenPreviewOnCanvas(int noteID)
+        public void OpenPreviewOnCanvas(NotePreview note)
         {
             Console.Write("Setting Canvas");
             //Set main canvas data
-            var results = db.QueryDB("select Title, MainText from Notes where ID = " + noteID);
+            var results = db.QueryDB("select Title, MainText from Notes where ID = " + note.ID);
 
             mainWindow.CanvasTitle.Text = results.Rows[0]["Title"].ToString();
             mainWindow.CanvasMainText.Text = results.Rows[0]["MainText"].ToString();
+            this.curNoteOnCanvas = note;
         }
     }
 }

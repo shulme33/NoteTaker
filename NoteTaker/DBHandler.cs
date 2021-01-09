@@ -47,6 +47,20 @@ namespace NoteTaker
             return ds;
         }
 
+        //public DataRow QuerySingleNote(int ID)
+        //{
+        //    String query = "select ID, Title, PreviewText, MainText from Notes where ID = @ID"; // + ID;
+        //    conn.Open();
+        //    SqlCommand cmd = new SqlCommand();
+        //    cmd.Connection = conn;
+        //    cmd.Parameters.Add("@ID", SqlDbType.Int);
+        //    cmd.Parameters["@ID"].Value = ID;
+        //    cmd.CommandText = query;
+
+        //    DataRow dr = new DataRow();
+
+        //}
+
         public void SaveItemFromCanvas(int ID, String title, String previewText, String mainText)
         {
 
