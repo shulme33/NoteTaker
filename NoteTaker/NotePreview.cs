@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace NoteTaker
 {
@@ -28,11 +29,11 @@ namespace NoteTaker
             this.previewText = previewText;
             this.mainWindow = mainWindow;
             this.noteList = noteList;
-            ConstructLabel();
+            ConstructPreviewButton();
         }
 
 
-        public void ConstructLabel()
+        public void ConstructPreviewButton()
         {
             //Generatl Strucutre of each preview
             //
@@ -50,6 +51,8 @@ namespace NoteTaker
             this.textTitle.FontSize = 20;
             this.textTitle.FontWeight = FontWeights.Bold;
             this.textTitle.Text = title;
+            //this.textTitle.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF0000"));
+
 
             //Preview Text
             this.textPreview = new TextBlock();
@@ -67,6 +70,7 @@ namespace NoteTaker
             this.mainButton = new Button();
             this.mainButton.Content = title;
             this.mainButton.HorizontalContentAlignment = HorizontalAlignment.Left;
+            this.mainButton.VerticalContentAlignment = VerticalAlignment.Top;
             this.mainButton.Click += new RoutedEventHandler(previewSelected);
             this.mainButton.BorderThickness = new Thickness(0, 0, 0, 1);
             this.mainButton.Content = stackPanel;
@@ -74,7 +78,7 @@ namespace NoteTaker
             this.mainButton.Height = 102;
 
             //Add to window
-            mainWindow.NoteList.Children.Add(this.mainButton);
+            mainWindow.NoteList.Children.Insert(0, this.mainButton);
         }
 
         public void UpdateItem(String title, String previewText)
@@ -93,8 +97,10 @@ namespace NoteTaker
 
         public String AddElipses(String prev)
         {
-            return prev.Substring(0, SystemConstants.PREVIEW_LENGTH) + " ...";
-
+            if(prev.Length > SystemConstants.PREVIEW_LENGTH){
+                return prev.Substring(0, SystemConstants.PREVIEW_LENGTH) + " ..."; 
+            }
+            return prev;
         }
 
     }

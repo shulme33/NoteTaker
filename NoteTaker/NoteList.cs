@@ -45,13 +45,38 @@ namespace NoteTaker
             OpenPreviewOnCanvas(this.curNoteOnCanvas);
         }
 
+        internal void AddNewNote()
+        {
+            String newTitle = "New Note";
+            String newMainText = "test";
+            NotePreview newNote = new NotePreview(-1,
+                                                  newTitle,
+                                                  newMainText,
+                                                  mainWindow,
+                                                  this);
+            previews.Add(newNote);
+            OpenNewPreviewOnCanvas(newNote, newTitle, newMainText);
+        }
+
         public void SaveNote()
         {
-            Console.WriteLine("Note being saved");
-            db.SaveItemFromCanvas(this.curNoteOnCanvas.ID, 
-                                  mainWindow.CanvasTitle.Text,
-                                  mainWindow.CanvasMainText.Text.Substring(0, SystemConstants.PREVIEW_LENGTH), 
-                                  mainWindow.CanvasMainText.Text);
+            if (this.curNoteOnCanvas.ID == -1)
+            {
+                //If -1, then this is a new note and doesn't exist in the system.
+                Console.WriteLine("New note being saved");
+                this.curNoteOnCanvas.ID = db.SaveNewItemFromCanvas(mainWindow.CanvasTitle.Text,
+                                            GetSubstring(mainWindow.CanvasMainText.Text, SystemConstants.PREVIEW_LENGTH),
+                                            mainWindow.CanvasMainText.Text);
+            }
+            else
+            {
+                Console.WriteLine("Existing note being saved");
+                db.SaveItemFromCanvas(this.curNoteOnCanvas.ID,
+                                      mainWindow.CanvasTitle.Text,
+                                      GetSubstring(mainWindow.CanvasMainText.Text, SystemConstants.PREVIEW_LENGTH),
+                                      mainWindow.CanvasMainText.Text);
+            }
+
 
             var results = db.QueryDB("select ID, Title, PreviewText, MainText from Notes where ID = " + this.curNoteOnCanvas.ID);
             
@@ -61,8 +86,19 @@ namespace NoteTaker
                                         dr["PreviewText"].ToString());
         }
 
+        public void OpenNewPreviewOnCanvas(NotePreview note, String newTitle, String newMainText)
+        {
+            mainWindow.CanvasTitle.Text = newTitle;
+            mainWindow.CanvasMainText.Text = newMainText;
+            this.curNoteOnCanvas = note;
+        }
+        
         public void OpenPreviewOnCanvas(NotePreview note)
         {
+            if (this.curNoteOnCanvas.ID == -1)
+            {
+                return;
+            }
             Console.Write("Setting Canvas");
             //Set main canvas data
             var results = db.QueryDB("select Title, MainText from Notes where ID = " + note.ID);
@@ -70,6 +106,15 @@ namespace NoteTaker
             mainWindow.CanvasTitle.Text = results.Rows[0]["Title"].ToString();
             mainWindow.CanvasMainText.Text = results.Rows[0]["MainText"].ToString();
             this.curNoteOnCanvas = note;
+        }
+
+        public String GetSubstring(String str, int len)
+        {
+            if (str.Length > len)
+            {
+                return str.Substring(0, len);
+            }
+            return str;
         }
     }
 }

@@ -19,6 +19,18 @@
 
         <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Fill="#BFBFBF" />
 
+        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Button x:Name="ButtonAddNote" Grid.Row="0" Grid.Column="0" Click="ButtonAddNote_Click">Add</Button>
+        </Grid>
+
         <ScrollViewer Grid.Row="1" Grid.Column="0" VerticalScrollBarVisibility="Visible" 
                       HorizontalScrollBarVisibility="Disabled" Width="300" 
                       HorizontalAlignment="Left" Background="#D9D9D9">

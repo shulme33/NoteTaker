@@ -38,5 +38,10 @@ namespace NoteTaker
         {
             noteList.SaveNote();
         }
+
+        private void ButtonAddNote_Click(object sender, RoutedEventArgs e)
+        {
+            noteList.AddNewNote();
+        }
     }
 }

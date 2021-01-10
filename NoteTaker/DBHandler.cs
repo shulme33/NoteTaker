@@ -47,6 +47,8 @@ namespace NoteTaker
             return ds;
         }
 
+
+
         //public DataRow QuerySingleNote(int ID)
         //{
         //    String query = "select ID, Title, PreviewText, MainText from Notes where ID = @ID"; // + ID;
@@ -64,7 +66,11 @@ namespace NoteTaker
         public void SaveItemFromCanvas(int ID, String title, String previewText, String mainText)
         {
 
-            String query = "update Notes set Title = @Title, PreviewText = @PreviewText, MainText = @MainText where ID = @ID";
+            String query = @"update Notes 
+                             set Title = @Title, 
+                                 PreviewText = @PreviewText, 
+                                 MainText = @MainText 
+                             where ID = @ID";
 
             conn.Open();
             SqlCommand cmd = new SqlCommand(query, conn);
@@ -95,6 +101,27 @@ namespace NoteTaker
             //conn.Open();
             //cmd.CommandText = query;
             //conn.Close();
+        }
+
+        public int SaveNewItemFromCanvas(String title, String previewText, String mainText)
+        {
+            String query = @"insert into Notes(Title, PreviewText, MainText)
+                             output Inserted.ID
+                             values(@Title, @PreviewText, @MainText)";
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(query, conn);
+            cmd.Parameters.Add("@Title", SqlDbType.NVarChar);
+            cmd.Parameters.Add("@PreviewText", SqlDbType.NVarChar);
+            cmd.Parameters.Add("@MainText", SqlDbType.NVarChar);
+
+            cmd.Parameters["@Title"].Value = title;
+            cmd.Parameters["@PreviewText"].Value = previewText;
+            cmd.Parameters["@MainText"].Value = mainText;
+
+            int newID = (int)cmd.ExecuteScalar();
+            conn.Close();
+
+            return newID;
         }
     }
 }
