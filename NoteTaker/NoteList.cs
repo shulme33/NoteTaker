@@ -41,11 +41,33 @@ namespace NoteTaker
 
             }
 
-            this.curNoteOnCanvas = previews[0]; ;
+            this.curNoteOnCanvas = previews[0];
             OpenPreviewOnCanvas(this.curNoteOnCanvas);
         }
 
-        internal void AddNewNote()
+        public void DeleteNote()
+        {
+            db.DeleteNote(this.curNoteOnCanvas.ID);
+            int curIndex = previews.IndexOf(this.curNoteOnCanvas);
+            previews.Remove(this.curNoteOnCanvas);
+            this.curNoteOnCanvas.DeleteItem();
+
+            if (previews.Count > 0 && curIndex < previews.Count)
+            {
+                this.curNoteOnCanvas = previews[curIndex];
+            } else if (previews.Count > 0 && curIndex >= previews.Count)
+            {
+                this.curNoteOnCanvas = previews[previews.Count-1];
+            }
+            else
+            {
+                AddNewNote();
+            }
+
+            OpenPreviewOnCanvas(this.curNoteOnCanvas);
+        }
+
+        public void AddNewNote()
         {
             String newTitle = "New Note";
             String newMainText = "test";

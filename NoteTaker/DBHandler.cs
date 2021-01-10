@@ -123,5 +123,20 @@ namespace NoteTaker
 
             return newID;
         }
+
+        public void DeleteNote(int noteID)
+        {
+            String query = "delete from Notes where ID = @ID";
+
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(query, conn);
+
+            cmd.Parameters.Add("@ID", SqlDbType.Int);
+            cmd.Parameters["@ID"].Value = noteID;
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
     }
 }

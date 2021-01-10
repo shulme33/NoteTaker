@@ -43,5 +43,10 @@ namespace NoteTaker
         {
             noteList.AddNewNote();
         }
+
+        private void ButtonDeleteNote_Click(object sender, RoutedEventArgs e)
+        {
+            noteList.DeleteNote();
+        }
     }
 }

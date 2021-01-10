@@ -89,6 +89,11 @@ namespace NoteTaker
             
         }
 
+        public void DeleteItem()
+        {
+            this.mainWindow.NoteList.Children.Remove(this.mainButton);
+        }
+
         public void previewSelected(object sender, RoutedEventArgs e)
         {
             Console.WriteLine("Clicked 2: " + title);
