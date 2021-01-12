@@ -44,7 +44,7 @@ namespace NoteTaker
 
             }
 
-            this.curNoteOnCanvas = previews[0];
+            this.curNoteOnCanvas = previews[previews.Count-1];
             OpenPreviewOnCanvas(this.curNoteOnCanvas);
         }
 
