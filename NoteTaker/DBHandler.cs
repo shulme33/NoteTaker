@@ -69,7 +69,8 @@ namespace NoteTaker
             String query = @"update Notes 
                              set Title = @Title, 
                                  PreviewText = @PreviewText, 
-                                 MainText = @MainText 
+                                 MainText = @MainText,
+                                 DateLastEdited = GetDate()
                              where ID = @ID";
 
             conn.Open();
@@ -105,9 +106,9 @@ namespace NoteTaker
 
         public int SaveNewItemFromCanvas(String title, String previewText, String mainText)
         {
-            String query = @"insert into Notes(Title, PreviewText, MainText)
+            String query = @"insert into Notes(Title, PreviewText, MainText, DateAdded, DateLastEdited)
                              output Inserted.ID
-                             values(@Title, @PreviewText, @MainText)";
+                             values(@Title, @PreviewText, @MainText, GetDate(), GetDate())";
             conn.Open();
             SqlCommand cmd = new SqlCommand(query, conn);
             cmd.Parameters.Add("@Title", SqlDbType.NVarChar);

@@ -29,7 +29,7 @@ namespace NoteTaker
 
         public void LoadNotesList()
         {
-            var results = db.QueryDB("select * from Notes");
+            var results = db.QueryDB("select * from Notes order by DateLastEdited asc");
 
             foreach (DataRow dr in results.Rows)
             {
