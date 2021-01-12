@@ -29,6 +29,7 @@ namespace NoteTaker
         public MainWindow()
         {
             InitializeComponent();
+
             db = new DBHandler();
             noteList = new NoteList(db, this);
             noteList.LoadNotesList();

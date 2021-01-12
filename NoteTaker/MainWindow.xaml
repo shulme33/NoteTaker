@@ -5,7 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NoteTaker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="1600">
+        Title="Note Taker" Height="800" Width="1600" FontFamily ="./Fonts/#Karla">
+
+    <Window.Resources>
+        <FontFamily x:Key="test" >/Fonts/#Karla</FontFamily>
+
+        <Style TargetType="Button" x:Key="RoundButton">
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5" />
+                </Style>
+            </Style.Resources>
+        </Style>
+    </Window.Resources>
+
     <Grid x:Name="Grid_Main">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="300" />
@@ -17,7 +30,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Fill="#BFBFBF" />
+        <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Fill="#3269a8" />
 
         <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
@@ -35,7 +48,7 @@
                       HorizontalScrollBarVisibility="Disabled" Width="300" 
                       HorizontalAlignment="Left" Background="#D9D9D9">
 
-            <StackPanel Name="NoteList" Width="280" >
+            <StackPanel Name="NoteList" Width="280">
 
 
             </StackPanel>
@@ -44,20 +57,33 @@
 
         <Grid Grid.Row="1" Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="40"/>
+                <RowDefinition Height="60"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="70"/>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="150"/>
             </Grid.ColumnDefinitions>
 
-            <TextBox x:Name="CanvasTitle" Grid.Row="0" Grid.Column="0" FontSize="30" BorderThickness="0"/>
-            <Button x:Name="ButtonSaveNote" Grid.Row="0" Grid.Column="1" Margin="5" Click="ButtonSaveNote_Click">Save</Button>
-                <TextBox x:Name="CanvasMainText" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" FontSize="16" TextWrapping="Wrap" AcceptsReturn="True"/>
-            <Button x:Name="ButtonDeleteNote" Grid.Row="0" Grid.Column="2" Margin="5" Click="ButtonDeleteNote_Click">Delete</Button>
+            <TextBox x:Name="CanvasTitle" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+                     FontSize="30" BorderThickness="0" Margin="20, 20, 20, 0"/>
+            <TextBox x:Name="CanvasMainText" Grid.Row="1" Grid.Column="0" 
+                         Grid.ColumnSpan="3" FontSize="16" TextWrapping="Wrap" 
+                         AcceptsReturn="True" Margin="20" BorderThickness="0"/>
+
+
+            <Button x:Name="ButtonDeleteNote" Grid.Row="2" Grid.Column="1" Margin="0, 0, 20, 20" 
+                    Click="ButtonDeleteNote_Click" Style="{DynamicResource RoundButton}"
+                    BorderThickness="2" BorderBrush="#3269a8" Background="Transparent" Foreground="#3269a8" 
+                    FontSize="18" Cursor="Hand">Delete</Button>
+
+            <Button x:Name="ButtonSaveNote" Grid.Row="2" Grid.Column="2" Margin="0, 0, 20, 20"
+                    Click="ButtonSaveNote_Click" Style="{DynamicResource RoundButton}"
+                    BorderThickness="0" Background="#3269a8" Foreground="White" 
+                    FontSize="18" Cursor="Hand" >Save</Button>
         </Grid>
         
     </Grid>

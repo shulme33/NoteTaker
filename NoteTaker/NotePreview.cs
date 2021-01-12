@@ -51,6 +51,7 @@ namespace NoteTaker
             this.textTitle.FontSize = 20;
             this.textTitle.FontWeight = FontWeights.Bold;
             this.textTitle.Text = title;
+            this.textTitle.Margin = new Thickness(0, 3, 0, 5);
             //this.textTitle.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF0000"));
 
 
@@ -76,6 +77,7 @@ namespace NoteTaker
             this.mainButton.Content = stackPanel;
             this.mainButton.Padding = new Thickness(5);
             this.mainButton.Height = 102;
+            this.mainButton.Cursor = Cursors.Hand;
 
             //Add to window
             mainWindow.NoteList.Children.Insert(0, this.mainButton);
@@ -89,7 +91,7 @@ namespace NoteTaker
             
         }
 
-        public void DeleteItem()
+        public void RemoveFromNoteList()
         {
             this.mainWindow.NoteList.Children.Remove(this.mainButton);
         }

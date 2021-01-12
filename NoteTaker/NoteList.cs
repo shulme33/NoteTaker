@@ -5,7 +5,10 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
+using System.Windows.Media;
 
 namespace NoteTaker
 {
@@ -50,7 +53,7 @@ namespace NoteTaker
             db.DeleteNote(this.curNoteOnCanvas.ID);
             int curIndex = previews.IndexOf(this.curNoteOnCanvas);
             previews.Remove(this.curNoteOnCanvas);
-            this.curNoteOnCanvas.DeleteItem();
+            this.curNoteOnCanvas.RemoveFromNoteList();
 
             if (previews.Count > 0 && curIndex < previews.Count)
             {
@@ -69,6 +72,8 @@ namespace NoteTaker
 
         public void AddNewNote()
         {
+            if (!CanAddNewNote()) return;
+
             String newTitle = "New Note";
             String newMainText = "test";
             NotePreview newNote = new NotePreview(-1,
@@ -117,11 +122,8 @@ namespace NoteTaker
         
         public void OpenPreviewOnCanvas(NotePreview note)
         {
-            if (this.curNoteOnCanvas.ID == -1)
-            {
-                return;
-            }
-            Console.Write("Setting Canvas");
+            if (!CanAddNewNote()) return;
+            
             //Set main canvas data
             var results = db.QueryDB("select Title, MainText from Notes where ID = " + note.ID);
 
@@ -130,13 +132,35 @@ namespace NoteTaker
             this.curNoteOnCanvas = note;
         }
 
-        public String GetSubstring(String str, int len)
+        public Boolean DiscardNewUnsavedNote(String popupText, String popupTitle)
+        {
+            MessageBoxResult answer = MessageBox.Show(popupText, popupTitle, MessageBoxButton.OKCancel); 
+            
+            if (answer == MessageBoxResult.OK)
+            {
+                this.curNoteOnCanvas.RemoveFromNoteList();
+                this.previews.Remove(this.curNoteOnCanvas);
+                return true;
+            }
+            return false;
+        }
+
+        private String GetSubstring(String str, int len)
         {
             if (str.Length > len)
             {
                 return str.Substring(0, len);
             }
             return str;
+        }
+
+        private Boolean CanAddNewNote()
+        {
+            if (this.curNoteOnCanvas.ID == -1 && !DiscardNewUnsavedNote("This action will discard your new note", "Discard note?"))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }
