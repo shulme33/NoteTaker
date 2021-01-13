@@ -1,0 +1,14 @@
+﻿--Setup a database on the localhost server called NoteTakerApp
+
+--Run the following to add the Notes table
+
+create table dbo.Notes(
+	ID int NOT NULL
+		IDENTITY(1,1),
+	Title nvarchar(200) NOT NULL,
+	PreviewText nvarchar(200) NULL,
+	MainText nvarchar(MAX) NULL,
+	DateAdded DateTime NOT NULL,
+	DateLastEdited DateTime NOT NULL,
+	Owner nvarchar(50) NOT NULL
+) ON [PRIMARY]

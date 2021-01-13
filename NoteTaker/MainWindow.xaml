@@ -34,14 +34,30 @@
 
         <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="120" />
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="120" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Button x:Name="ButtonAddNote" Grid.Row="0" Grid.Column="0" Click="ButtonAddNote_Click">Add</Button>
+            <Button x:Name="ButtonAddNote" Grid.Row="0" Grid.Column="0" Click="ButtonAddNote_Click"
+                    Background="Transparent" BorderThickness="0,0,2,0" Margin="5,12,5,12" 
+                    BorderBrush="#2f629c" Cursor="Hand">
+                <StackPanel>
+                    <Image Source="./Images/add_note.png" Width="40" />
+                    <Label Foreground="White" Margin="0,5,0,0"
+                           FontSize="18">Add Note</Label>
+                </StackPanel>
+            </Button>
+
+            <Button Grid.Row="0" Grid.Column="2" Background="Transparent"
+                    BorderThickness="0">
+                <Image Source="./Images/profile_pic.png"/>
+
+            </Button>
+            
         </Grid>
 
         <ScrollViewer Grid.Row="1" Grid.Column="0" VerticalScrollBarVisibility="Visible" 
@@ -59,7 +75,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="60"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="70"/>
+                <RowDefinition Height="90"/>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -72,18 +88,19 @@
                      FontSize="30" BorderThickness="0" Margin="20, 20, 20, 0"/>
             <TextBox x:Name="CanvasMainText" Grid.Row="1" Grid.Column="0" 
                          Grid.ColumnSpan="3" FontSize="16" TextWrapping="Wrap" 
-                         AcceptsReturn="True" Margin="20" BorderThickness="0"/>
+                         AcceptsReturn="True" Margin="20,20,20,0" BorderThickness="0"/>
 
+            <Rectangle Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Fill="#3269a8"/>
 
-            <Button x:Name="ButtonDeleteNote" Grid.Row="2" Grid.Column="1" Margin="0, 0, 20, 20" 
+            <Button x:Name="ButtonDeleteNote" Grid.Row="2" Grid.Column="1" Margin="0, 20, 20, 20" 
                     Click="ButtonDeleteNote_Click" Style="{DynamicResource RoundButton}"
-                    BorderThickness="2" BorderBrush="#3269a8" Background="Transparent" Foreground="#3269a8" 
-                    FontSize="18" Cursor="Hand">Delete</Button>
+                    BorderThickness="2" BorderBrush="White" Background="Transparent" 
+                    Foreground="White" FontSize="18" Cursor="Hand">Delete</Button>
 
-            <Button x:Name="ButtonSaveNote" Grid.Row="2" Grid.Column="2" Margin="0, 0, 20, 20"
+            <Button x:Name="ButtonSaveNote" Grid.Row="2" Grid.Column="2" Margin="0, 20, 20, 20"
                     Click="ButtonSaveNote_Click" Style="{DynamicResource RoundButton}"
-                    BorderThickness="0" Background="#3269a8" Foreground="White" 
-                    FontSize="18" Cursor="Hand" >Save</Button>
+                    BorderThickness="2" BorderBrush="White" Background="#3269a8" 
+                    Foreground="White" FontSize="18" Cursor="Hand" >Save</Button>
         </Grid>
         
     </Grid>

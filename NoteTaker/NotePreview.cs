@@ -49,9 +49,9 @@ namespace NoteTaker
             //Title Text
             this.textTitle = new TextBlock();
             this.textTitle.FontSize = 20;
-            this.textTitle.FontWeight = FontWeights.Bold;
+            //this.textTitle.FontWeight = FontWeights.Bold;
             this.textTitle.Text = title;
-            this.textTitle.Margin = new Thickness(0, 3, 0, 5);
+            this.textTitle.Margin = new Thickness(3, 3, 0, 5);
             //this.textTitle.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF0000"));
 
 
@@ -59,6 +59,7 @@ namespace NoteTaker
             this.textPreview = new TextBlock();
             this.textPreview.FontSize = 16;
             this.textPreview.TextWrapping = TextWrapping.Wrap;
+            this.textPreview.Margin = new Thickness(3, 0, 0, 0);
             this.textPreview.Text = AddElipses(previewText);
 
             //Stack Panel
