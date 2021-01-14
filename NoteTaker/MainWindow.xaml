@@ -35,6 +35,7 @@
         <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="120" />
+                <ColumnDefinition Width="120" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="120" />
             </Grid.ColumnDefinitions>
@@ -43,7 +44,7 @@
             </Grid.RowDefinitions>
 
             <Button x:Name="ButtonAddNote" Grid.Row="0" Grid.Column="0" Click="ButtonAddNote_Click"
-                    Background="Transparent" BorderThickness="0,0,2,0" Margin="5,12,5,12" 
+                    Background="Transparent" BorderThickness="0,0,2,0" Margin="0,12,0,12" 
                     BorderBrush="#2f629c" Cursor="Hand">
                 <StackPanel>
                     <Image Source="./Images/add_note.png" Width="40" />
@@ -52,7 +53,17 @@
                 </StackPanel>
             </Button>
 
-            <Button Grid.Row="0" Grid.Column="2" Background="Transparent"
+            <Button x:Name="ButtonImportNote" Grid.Row="0" Grid.Column="1"
+                    Background="Transparent" BorderThickness="0,0,2,0" Margin="0,12,0,12" 
+                    BorderBrush="#2f629c" Cursor="Hand" Click="ButtonImportNote_Click">
+                <StackPanel>
+                    <Image Source="./Images/import_note.png" Width="40" />
+                    <Label Foreground="White" Margin="0,5,0,0"
+                           FontSize="18">Import</Label>
+                </StackPanel>
+            </Button>
+
+            <Button Grid.Row="0" Grid.Column="3" Background="Transparent"
                     BorderThickness="0">
                 <Image Source="./Images/profile_pic.png"/>
 

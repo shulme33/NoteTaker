@@ -117,5 +117,14 @@
   <ItemGroup>
     <Resource Include="Images\profile_pic.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="SQLSetup.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\import_note_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\import_note.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

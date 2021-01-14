@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,6 +51,33 @@ namespace NoteTaker
         private void ButtonDeleteNote_Click(object sender, RoutedEventArgs e)
         {
             noteList.DeleteNote();
+        }
+
+        private void ButtonImportNote_Click(object sender, RoutedEventArgs e)
+        {
+            // Create OpenFileDialog 
+            OpenFileDialog explorer = new Microsoft.Win32.OpenFileDialog();
+            explorer.DefaultExt = ".txt";
+            explorer.Filter = "TXT Files (*.txt)|*.txt";
+            Nullable<bool> result = explorer.ShowDialog();
+
+            // Get the selected file name and display in a TextBox 
+            if (result == true)
+            {
+                String filename = explorer.FileName;
+
+                try
+                {
+                    using (var reader = new StreamReader(filename))
+                    {
+                        String fileContents = reader.ReadToEnd();
+                        noteList.AddNewNote(explorer.SafeFileName, fileContents);
+                    }
+                }catch(Exception ex)
+                {
+                    MessageBox.Show("File could not be loaded");
+                }
+            }
         }
     }
 }

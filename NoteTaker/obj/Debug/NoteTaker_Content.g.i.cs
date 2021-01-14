@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sqlsetup.txt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/import_pic.png")]
 
 

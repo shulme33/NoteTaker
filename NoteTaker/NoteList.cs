@@ -70,12 +70,15 @@ namespace NoteTaker
             OpenPreviewOnCanvas(this.curNoteOnCanvas);
         }
 
+
         public void AddNewNote()
         {
-            if (!CanAddNewNote()) return;
+            this.AddNewNote("New Note", "Add note text here...");
+        }
 
-            String newTitle = "New Note";
-            String newMainText = "test";
+        public void AddNewNote(String newTitle, String newMainText)
+        {
+            if (!CanAddNewNote()) return;
             NotePreview newNote = new NotePreview(-1,
                                                   newTitle,
                                                   newMainText,
